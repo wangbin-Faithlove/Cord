@@ -1,0 +1,17 @@
+#!/bin/bash
+set -e
+
+cd ~/onos-cord/
+docker-compose stop
+docker-compose rm -f
+docker-compose up -d
+echo "sleep 180s"
+sleep 180
+
+cd ~/service-profile/cord-pod/
+make vtn
+sleep 180
+
+make fabric
+echo "sleep 60s"
+sleep 60
