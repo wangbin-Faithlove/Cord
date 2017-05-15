@@ -1,0 +1,4 @@
+#!/bin/bash
+curl -X PUT -H "Content-Type: application/json" -u onos:rocks -d @data1.json http://localhost:8182/onos/cordvtn/serviceNetworks/c5ee4979-4ed6-44ae-bd42-9200a48ab8b5
+curl -X PUT -H "Content-Type: application/json" -u onos:rocks -d @data4.json http://localhost:8182/onos/cordvtn/serviceNetworks/3fd1b1ab-4c38-498d-bfd7-9fb8999c29c9
+curl -X PUT -H "Content-Type: application/json" -u onos:rocks -d @data2.json http://localhost:8182/onos/cordvtn/serviceNetworks/86f89723-487c-4e50-8533-ee415f39c40d
