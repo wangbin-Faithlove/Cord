@@ -13,4 +13,4 @@ ovs-vsctl add-port br0 patch-to-br1 \
         -- add-port br1 patch-to-br0 \
         -- set interface patch-to-br0 type=patch option:peer=patch-to-br1
 
-sudo ovs-vsctl  add-port br1 vxlan -- set interface vxlan type=vxlan option:remote_ip=192.168.64.131 option:key=1234
+ovs-vsctl  add-port br1 vxlan -- set interface vxlan type=vxlan option:remote_ip=192.168.64.131 option:key=1234
