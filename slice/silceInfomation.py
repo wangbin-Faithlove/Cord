@@ -23,10 +23,10 @@ def getSlicesName(url):
 	slices_name = [i["name"] for i in slices if not (i["name"].endswith(MANAGEMENT) or i["name"].endswith(PUBLIC))]
 	return slices_name
 
-def getPortNumbers(url, slicesName):
+def getportMac(url, slicesName):
 	ports = getJsonData(url)
-	portNumbers = [[p["id"],p["network"][-2]] for s in slicesName for p in ports if p["humanReadableName"].startswith(s)]
-	return portNumbers
+	portMac = [[p["mac"],p["network"][-2]] for s in slicesName for p in ports if p["humanReadableName"].startswith(s)]
+	return portMac
 
 def getNetworkId(url, ports):
 	networks = getJsonData(NETWORKS_URL)
@@ -35,13 +35,13 @@ def getNetworkId(url, ports):
 
 def slicesInfo():
 	slicesName = getSlicesName(SLICES_URL)
-	ports = getPortNumbers(PORTS_URL, slicesName)
+	ports = getportMac(PORTS_URL, slicesName)
 	networksId = getNetworkId(NETWORKS_URL, ports)
-	portNumbers = [p[0] for p in ports]
+	portMac = [p[0] for p in ports]
 
 	slices = {}
 	for i in range(len(slicesName)):
-		slices[slicesName[i]] = {"portNumber":portNumbers[i], "networkId": networksId[i]}
+		slices[slicesName[i]] = {"portMac":portMac[i].replace("fa", "fe", 1), "networkId": networksId[i]}
 
 	return slices
 
